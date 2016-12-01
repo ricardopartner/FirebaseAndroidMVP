@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Agenda</string>
+    <string name="deixe_sua_mensagem">Deixe sua mensagem</string>
+    <string name="btn_contatos">Contatos</string>
+    <string name="title_principal">Página principal!</string>
+    <string name="nome_do_aluno">Nome do aluno</string>
+    <string name="endereco_do_aluno">Endereço do aluno</string>
+    <string name="ok">ok</string>
+    <string name="plus">+</string>
+</resources>
