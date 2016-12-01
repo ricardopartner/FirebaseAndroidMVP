@@ -1,5 +1,7 @@
 package br.com.amazoniasistemas.agenda.presenters;
 
+import android.content.Context;
+import android.content.Intent;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -9,6 +11,7 @@ import java.util.Observer;
 import br.com.amazoniasistemas.agenda.R;
 import br.com.amazoniasistemas.agenda.models.Contato;
 import br.com.amazoniasistemas.agenda.models.ContatoDao;
+import br.com.amazoniasistemas.agenda.views.ContatoActivity;
 import br.com.amazoniasistemas.agenda.views.ContatoListActivity;
 
 public class ContatoListPresenter implements Observer {
@@ -23,7 +26,6 @@ public class ContatoListPresenter implements Observer {
         this.contatoDao = new ContatoDao();
         contatoDao.addObserver(this);
     }
-
 
     private void refreshListView() {
         ArrayAdapter<Contato> adapter = new ArrayAdapter<>(this.contatoListActivity, android.R.layout.simple_list_item_1,
@@ -42,5 +44,12 @@ public class ContatoListPresenter implements Observer {
 
     public void stopListening() {
         this.contatoDao.stopListening();
+    }
+
+    public Intent intentContato(int numberRow) {
+        Intent intent = new Intent(this.contatoListActivity, ContatoActivity.class);
+        Contato contato = contatoDao.getContatos().get(numberRow);
+        intent.putExtra("contato", contato);
+        return intent;
     }
 }
