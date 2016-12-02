@@ -16,7 +16,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".views.ContatoActivity" />
-        <activity android:name=".views.ContatoListActivity"></activity>
+        <activity android:name=".views.ContatoListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="views.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

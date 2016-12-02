@@ -12,15 +12,25 @@ public class Contato implements Parcelable {
     private String name;
     private String address;
     private double salary;
+    private String city;
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
 
     public Contato() {
     }
 
-    public Contato(String key, String name, String address, double salary) {
+    public Contato(String key, String name, String address, double salary, String city) {
         this.key = key;
         this.name = name;
         this.address = address;
         this.salary = salary;
+        this.city = city;
     }
 
     public void setKey(String key) {
@@ -33,7 +43,7 @@ public class Contato implements Parcelable {
     }
 
     public boolean compare(String key) {
-         return this.key.equals(key);
+        return this.key.equals(key);
     }
 
     public String getName() {
@@ -58,6 +68,7 @@ public class Contato implements Parcelable {
         name = in.readString();
         address = in.readString();
         salary = in.readDouble();
+        city = in.readString();
     }
 
     @Override
@@ -71,6 +82,7 @@ public class Contato implements Parcelable {
         dest.writeString(name);
         dest.writeString(address);
         dest.writeDouble(salary);
+        dest.writeString(city);
     }
 
     @SuppressWarnings("unused")

@@ -7,4 +7,5 @@
     <string name="endereco_do_aluno">Endereço do aluno</string>
     <string name="ok">ok</string>
     <string name="plus">+</string>
+    <string name="hint_cidade">Cidade</string>
 </resources>

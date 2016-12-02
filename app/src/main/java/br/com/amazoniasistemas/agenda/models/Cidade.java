@@ -26,6 +26,21 @@ public class Cidade implements Parcelable {
     }
 
 
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+
+    @Override
+    public String toString() {
+        return nome + " - " + uf;
+    }
+
+    public Cidade() {
+
+    }
+
+    //region Parceable implementation
     protected Cidade(Parcel in) {
         key = in.readString();
         nome = in.readString();
@@ -56,4 +71,5 @@ public class Cidade implements Parcelable {
             return new Cidade[size];
         }
     };
+    //endregion
 }
