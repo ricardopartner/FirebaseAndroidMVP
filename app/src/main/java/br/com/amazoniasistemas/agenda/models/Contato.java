@@ -46,6 +46,18 @@ public class Contato implements Parcelable {
         return this.key.equals(key);
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
     public String getName() {
         return name;
     }
