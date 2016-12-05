@@ -12,7 +12,7 @@ public class ContatoService {
     }
 
     public void merge() {
-        if (this.contato.getKey() == null || this.contato.getKey().length() ==0) {
+        if (this.contato.key == null || this.contato.key.length() ==0) {
             this.contatoDao.insert(this.contato);
         }else{
             this.contatoDao.update(this.contato);

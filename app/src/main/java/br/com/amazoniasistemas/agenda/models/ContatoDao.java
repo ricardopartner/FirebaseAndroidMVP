@@ -7,9 +7,13 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Observable;
 
 import static android.content.ContentValues.TAG;
@@ -34,31 +38,29 @@ public class ContatoDao extends Observable {
     }
 
     void update(Contato contato) {
-        this.myRef.getContacts().child(contato.getKey()).setValue(contato);
+        this.myRef.getContacts().child(contato.key).setValue(contato);
     }
 
     private ChildEventListener childEventListener = new ChildEventListener() {
         @Override
         public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
-            Log.d(TAG, "onChildAdded:" + dataSnapshot.getKey());
-
 
             Contato contato = dataSnapshot.getValue(Contato.class);
-            contato.setKey(dataSnapshot.getKey());
+            contato.key = dataSnapshot.getKey();
             contatos.add(contato);
             setChanged();
             notifyObservers();
+
         }
 
         @Override
         public void onChildChanged(DataSnapshot dataSnapshot, String previousChildName) {
             Log.d(TAG, "onChildChanged:" + dataSnapshot.getKey());
-            String key = dataSnapshot.getKey();
             Contato contato = dataSnapshot.getValue(Contato.class);
-            contato.setKey(key);
+            contato.key = dataSnapshot.getKey();
 
             for (int i = 0; i < contatos.size(); i++) {
-                if (contatos.get(i).compare(key)) {
+                if (contatos.get(i).compare(contato.key)) {
                     contatos.set(i, contato);
                     setChanged();
                     notifyObservers();

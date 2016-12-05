@@ -4,23 +4,17 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.google.firebase.database.Exclude;
+import com.google.firebase.database.IgnoreExtraProperties;
 
-
+@IgnoreExtraProperties
 public class Contato implements Parcelable {
+    @Exclude
+    public String key;
+    public String name;
+    public String address;
+    public double salary;
+    public String city;
 
-    private String key;
-    private String name;
-    private String address;
-    private double salary;
-    private String city;
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
 
     public Contato() {
     }
@@ -33,41 +27,9 @@ public class Contato implements Parcelable {
         this.city = city;
     }
 
-    public void setKey(String key) {
-        this.key = key;
-    }
 
-    @Exclude
-    public String getKey() {
-        return key;
-    }
-
-    public boolean compare(String key) {
+    boolean compare(String key) {
         return this.key.equals(key);
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public void setSalary(double salary) {
-        this.salary = salary;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public double getSalary() {
-        return salary;
     }
 
     @Override

@@ -5,43 +5,34 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.google.firebase.database.Exclude;
+import com.google.firebase.database.IgnoreExtraProperties;
 
+@IgnoreExtraProperties
 public class Cidade implements Parcelable {
-
-    private String key;
-    private String nome;
-    private String uf;
-
     @Exclude
-    public String getKey() {
-        return key;
-    }
+    public String key;
+    public String nome;
+    public String uf;
 
-    public String getNome() {
-        return nome;
-    }
-
-    public String getUf() {
-        return uf;
-    }
-
-
-    public void setKey(String key) {
+    public Cidade(String key, String nome, String uf) {
         this.key = key;
-    }
-
-
-    @Override
-    public String toString() {
-        return nome + " - " + uf;
+        this.nome = nome;
+        this.uf = uf;
     }
 
     public Cidade() {
 
     }
 
-    //region Parceable implementation
-    protected Cidade(Parcel in) {
+    @Override
+    public String toString() {
+        return nome + " - " + uf;
+    }
+
+
+
+    //region Parcelable
+    private Cidade(Parcel in) {
         key = in.readString();
         nome = in.readString();
         uf = in.readString();
