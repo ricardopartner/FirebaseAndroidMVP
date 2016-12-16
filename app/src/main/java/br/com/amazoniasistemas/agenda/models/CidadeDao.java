@@ -33,6 +33,8 @@ public class CidadeDao extends Observable {
                 GenericTypeIndicator<HashMap<String, Cidade>> t = new GenericTypeIndicator<HashMap<String, Cidade>>() {
                 };
                 final HashMap<String, Cidade> hashMap = dataSnapshot.getValue(t);
+
+
                 for (Map.Entry<String, Cidade> entry : hashMap.entrySet()) {
                     cities.add(new Cidade(entry.getKey(), entry.getValue().nome, entry.getValue().uf));
                     Log.d(TAG, "onDataChange: " + entry.getKey());
